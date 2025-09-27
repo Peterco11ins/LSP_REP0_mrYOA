@@ -5,7 +5,7 @@ package org.howard.edu.lsp.assignment3;
  * This class demonstrates the object-oriented redesign of the ETL pipeline
  * with improved separation of concerns and better encapsulation.
  * 
- * @author Your Name
+ * @author Peter Collins
  * @version 1.0
  * @since Assignment 3
  */
