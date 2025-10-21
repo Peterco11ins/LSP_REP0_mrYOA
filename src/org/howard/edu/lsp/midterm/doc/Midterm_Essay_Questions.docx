@@ -1,0 +1,51 @@
+LSP Midterm Exam - Essay Questions
+Student: Peter Collins
+Date: [Current Date]
+
+Question 1: Cohesion Analysis
+
+Part a) (5 pts): Should a well-designed class have high or low cohesion?
+
+A well-designed class should have high cohesion. High cohesion means that a class encapsulates a single, well-defined responsibility with closely related methods and data. This improves readability, change-resilience, reduces defects, and simplifies unit testing. 
+
+This aligns with Riel's heuristics: "A class should capture one and only one key abstraction," "Keep related data and behavior in one place," and "Keep coupling low and cohesion high."
+
+Part b) (15 pts): Analysis of StudentPortalHelper class
+
+The StudentPortalHelper class demonstrates low cohesion because it mixes multiple unrelated responsibilities (GPA calculation, file export, password validation) within a single utility class. This violates Riel's heuristic for clear abstraction and avoiding mixed concerns (business logic, I/O, security). 
+
+To improve the design, split the class into smaller, focused classes, each with a single responsibility: GpaCalculator, RosterExporter, and PasswordValidator. This separation would enhance maintainability, testability, and extensibility, aligning with Riel's principle of high cohesion and low coupling.
+
+Question 3: UML Diagram Analysis
+
+Part a) (10 pts): Does the current structure support dynamic trim-level changes?
+
+No, the current structure doesn't really support changing a car's trim level once the car object is created. Trim levels (Base, Luxury, Sport) are implemented as subclasses of Car, meaning a car's type is fixed at creation (e.g., BaseCar or LuxuryCar). In Java, an object's type cannot be changed after creation. 
+
+Upgrading a car would require creating an entirely new object and copying details like VIN and engine type, which is inefficient and violates good object-oriented design. Trim level should be an updatable feature/attribute, not a fixed class identity, and inheritance in this context makes the trim inflexible.
+
+Part b) (10 pts): How to refactor for dynamic trim-level changes?
+
+Use composition instead of inheritance for trim levels. The Car class should have a trim level as one of its fields, rather than being extended by trim-specific subclasses. Create a TrimLevel interface (or abstract class) with implementing classes like BaseTrim, LuxuryTrim, and SportTrim. 
+
+The Car class would then include a private TrimLevel trim; field and provide setTrimLevel(TrimLevel trim) and getTrimLevel() methods. This allows dynamic changes (e.g., car.setTrimLevel(new LuxuryTrim())) without creating a new Car object. This approach promotes flexibility, easier updates, and aligns with the "composition over inheritance" principle. 
+
+Apply the same composition idea to engine types (Electric, Petrol) for a more modular and realistic design.
+
+Question 4: Smart-Campus Device System Rationale
+
+Part 5: Brief Rationale (2-4 sentences)
+
+Device is defined as an abstract class because it provides common functionality (id, location, heartbeat, connection status) that all smart devices share, while requiring each concrete device to implement its own specific status reporting through the abstract getStatus() method. 
+
+The Networked and BatteryPowered interfaces add specific behaviors to concrete classes through interface implementation, allowing devices to have different combinations of capabilities (e.g., a DoorLock can be both networked and battery-powered, while a Thermostat might only be networked). 
+
+This design is NOT an example of multiple inheritance in Java because Java only supports single inheritance for classes, but it does demonstrate multiple interface implementation, which allows a class to implement multiple interfaces while extending only one abstract class.
+
+Question 5: Reflection on AI Use in Learning and Problem Solving
+
+I've used AI tools like ChatGPT and Claude to understand programming concepts, fix code issues, explain features, check logic, and get examples. Benefits include fast feedback, explanations without waiting for office hours, increased confidence, and better understanding of mistakes. 
+
+Limitations include AI not being perfect, sometimes giving wrong answers or code that doesn't fully match assignments, requiring double-checking. 
+
+Looking ahead, AI is expected to be a significant part of learning and working in tech, acting as "a second set of eyes" to help think through problems and sharpen skills, but still requiring you to "know what you're doing."
